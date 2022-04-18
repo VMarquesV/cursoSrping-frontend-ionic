@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 
+import { CategoriaService } from '../../services/domain/categoria.service';
+import { CategoriaDTO } from '../../models/categoria.dto';
 
 @Component({
   selector: 'app-categorias',
@@ -10,7 +12,13 @@ import { MenuController } from '@ionic/angular';
 })
 export class CategoriasPage implements OnInit {
 
-  constructor(public router: Router, public menu: MenuController) { }
+  items: CategoriaDTO[];
+
+  constructor(
+    public router: Router, 
+    public menu: MenuController,
+    public categoriaService: CategoriaService
+  ) { }
 
   ngOnInit() {
   }
@@ -20,5 +28,13 @@ export class CategoriasPage implements OnInit {
 
   ionViewWillEnter(){
     this.menu.enable(true);
+
+    this.categoriaService.findAll()
+      .subscribe( res => {
+        this.items = res;
+      }, 
+      error => {
+        console.log(error);
+      });
   }
 }

@@ -7,6 +7,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<p>Página de Categoria</p>
+<ion-content padding>
+<ion-list>
+  <button class="cat-item" ion-item *ngFor="let item of items">
+
+    <ion-item>
+      <ion-thumbnail slot="end">
+        <img src="../../assets/hk.jpg">
+      </ion-thumbnail>
+      <ion-label>Item Thumbnail</ion-label>
+    </ion-item>
+  </button>
+</ion-list>
 </ion-content>
