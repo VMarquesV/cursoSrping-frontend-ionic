@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CategoriasPage implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, public menu: MenuController) { }
 
   ngOnInit() {
   }
@@ -17,4 +18,7 @@ export class CategoriasPage implements OnInit {
     this.router.navigateByUrl('home/login');
   }
 
+  ionViewWillEnter(){
+    this.menu.enable(true);
+  }
 }
